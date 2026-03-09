@@ -1,0 +1,62 @@
+---
+const logo = "http://localhost:3845/assets/6cea237dd21c3355fc27037e1acd4ccae7203f2b.svg";
+
+const navLinks = [
+  { label: "Platform", href: "#platform" },
+  { label: "Capabilities", href: "#capabilities" },
+  { label: "About", href: "#about" },
+  { label: "Team", href: "#team" },
+  { label: "Insights", href: "#insights" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<header
+  class="sticky top-0 z-50 w-full bg-white py-4"
+  style="padding: 16px 0;"
+>
+  <div
+    class="flex items-center justify-between mx-auto"
+    style="max-width: 1440px; padding: 0 36px;"
+  >
+    <a href="/" aria-label="Principal Mineral home" class="shrink-0">
+      <img
+        src={logo}
+        alt="Principal Mineral"
+        style="height: 58px; width: auto;"
+      />
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="flex items-center list-none m-0 p-0" style="gap: 12px;">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="block text-center no-underline transition-colors"
+                style={`
+                  font-family: var(--font-body);
+                  font-weight: 300;
+                  font-size: var(--text-body-lg);
+                  color: var(--color-keystone);
+                  letter-spacing: 0.6px;
+                  padding: 4px 12px;
+                  transition: color var(--duration-normal) ease;
+                `}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  a:hover {
+    color: var(--color-cobalt) !important;
+  }
+</style>

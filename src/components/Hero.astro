@@ -1,0 +1,67 @@
+---
+const heroImage = "http://localhost:3845/assets/b200fbfa97a3b479316592cde39d9ad28bf1491c.png";
+---
+
+<section
+  style="position: relative; min-height: 761px; display: flex; align-items: flex-end; padding: 72px;"
+>
+  <!-- Background image container -->
+  <div
+    style="position: absolute; inset: 0; border-radius: 40px; overflow: hidden; pointer-events: none;"
+    aria-hidden="true"
+  >
+    <img
+      src={heroImage}
+      alt=""
+      style="position: absolute; top: 0; left: -1.43%; width: 102.87%; height: 100%; object-fit: cover; max-width: none;"
+    />
+  </div>
+
+  <!-- Gradient overlay -->
+  <div
+    aria-hidden="true"
+    style="
+      position: absolute;
+      inset: 0;
+      border-radius: 40px;
+      background: linear-gradient(to left, rgba(44, 74, 198, 0) 0%, rgba(34, 48, 119, 0.77) 56.835%, #1F285F 100%);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    "
+  ></div>
+
+  <!-- Content -->
+  <div
+    style="position: relative; z-index: 1; max-width: 978px; display: flex; flex-direction: column; gap: 16px;"
+  >
+    <h1
+      style="
+        font-family: var(--font-headings);
+        font-weight: 800;
+        font-size: clamp(2.5rem, 5vw, 65px);
+        color: var(--color-white);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        line-height: 1;
+        margin: 0;
+      "
+    >
+      The Intelligence platform for strategic materials
+    </h1>
+    <p
+      style="
+        font-family: var(--font-body);
+        font-weight: 300;
+        font-size: var(--text-body-lg);
+        color: var(--color-powder);
+        max-width: 593px;
+        line-height: var(--leading-body);
+        letter-spacing: 0.6px;
+        margin: 0;
+      "
+    >
+      Principal Mineral is reducing risk and ensuring competitiveness across
+      our most important supply chains for a secure and innovative world.
+    </p>
+  </div>
+</section>

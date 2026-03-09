@@ -1,0 +1,59 @@
+---
+import ApplicationsAccordion from "./ApplicationsAccordion.tsx";
+---
+
+<section
+  id="applications"
+  style="background: var(--color-keystone); padding: 72px 0;"
+>
+  <div
+    style="
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    "
+  >
+    <!-- Header -->
+    <div
+      style="
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+      "
+    >
+      <h2
+        style="
+          font-family: var(--font-headings);
+          font-weight: 800;
+          font-size: var(--text-headline);
+          color: var(--color-white);
+          line-height: var(--leading-headline-md);
+          max-width: 800px;
+        "
+      >
+        Delivering the materials powering strategic technologies
+      </h2>
+      <p
+        style="
+          font-family: var(--font-body);
+          font-weight: 300;
+          font-size: var(--text-body-lg);
+          color: var(--color-powder);
+          line-height: var(--leading-body);
+          letter-spacing: 0.6px;
+        "
+      >
+        Principal Mineral addresses points of failure in strategic supply
+        chains to ensure the materials that power defense, AI, and intelligence
+        are made in America.
+      </p>
+    </div>
+
+    <!-- Accordion + Image (React island) -->
+    <ApplicationsAccordion client:visible />
+  </div>
+</section>
