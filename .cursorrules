@@ -1,0 +1,67 @@
+# Principal Mineral — Cursor Agent Rules
+
+You are a coding agent working on the Principal Mineral website. The team uses **Astro + Tailwind CSS**. You work primarily with designers who have minimal code knowledge — be clear, confident, and avoid unnecessary jargon in your responses.
+
+## Source of Truth
+
+The file `brand.md` (in the project root or `docs/` directory) is the **canonical source of truth** for all brand decisions. When a Figma design conflicts with `brand.md`, **`brand.md` wins**. Specifically:
+
+- Colors: Use ONLY the named palette (Cobalt, Keystone, Oxide, Stratum, Powder Blue, Nickel, Highlight, Copper, Earth) and the warm gray scale. Never hard-code hex values — use CSS custom properties (`var(--color-cobalt)`, etc.)
+- Typography: Commuters Sans for headings (ExtraBold 800 default), Geologica for body (Light 300 default). Use the defined `--font-size-*` scale. No other fonts.
+- Spacing: Use only the `--spacing-*` token scale (4px–112px). No magic numbers.
+- Border radius: `--radius-sm` to `--radius-md` (4–8px) as default. Avoid pills except for tags/badges.
+- Shadows: Use `--shadow-*` tokens. Subtle and grounding — never decorative.
+
+## Tech Stack
+
+- **Framework**: Astro
+- **Styling**: Tailwind CSS, extended with CSS custom properties from `brand.md`
+- **Fonts**: Commuters Sans via Adobe Fonts, Geologica via Google Fonts, Montserrat as fallback
+- **Approach**: Mobile-first, component-based, accessibility-first (WCAG AA minimum)
+
+## Code Style
+
+- Write Astro components (`.astro` files) unless a React/interactive component is explicitly needed
+- Use Tailwind utility classes mapped to brand tokens wherever possible
+- When Tailwind doesn't cover a brand token, use CSS custom properties in a `<style>` block
+- Use semantic HTML (`<section>`, `<nav>`, `<article>`, `<header>`, `<footer>`, etc.)
+- All images must have descriptive `alt` text
+- Touch targets minimum 44px
+- Respect `prefers-reduced-motion`
+
+## When Working from Figma
+
+When given a Figma link or design reference:
+1. Use the Figma MCP to pull the design's structure, layout, and content
+2. Cross-reference every visual decision against `brand.md` — if Figma uses a color, font, spacing, or radius that doesn't match `brand.md`, use the `brand.md` value instead
+3. Preserve the Figma design's **layout, hierarchy, and content** while enforcing `brand.md` tokens
+4. Call out any conflicts you find between Figma and `brand.md` so the designer is aware
+
+## MCP Tools Available
+
+### Figma MCP
+Used to pull design data from Figma links — structure, layout, spacing, colors, typography, content.
+
+### Playwright MCP (Microsoft)
+Used to view and screenshot the running dev server. Key tools:
+
+- **`browser_navigate`** — Open a URL (e.g., `http://localhost:4321`)
+- **`browser_resize`** — Set viewport size. Use `{ "width": 1440, "height": 900 }` for desktop, `{ "width": 375, "height": 812 }` for mobile (or use device presets like `"iPhone 13"`, `"iPad Pro 11"`)
+- **`browser_take_screenshot`** — Capture the current page. Use `{ "fullPage": true, "raw": true }` for full-page PNG screenshots for comparison
+- **`browser_snapshot`** — Get the accessibility tree (structured DOM data, useful for verifying semantic HTML)
+- **`browser_close`** — Release the browser when done
+
+**Standard screenshot workflow:**
+1. Ensure the dev server is running (`astro dev` or `npm run dev`)
+2. `browser_navigate` → `http://localhost:4321` (or the specific route)
+3. `browser_resize` → `{ "width": 1440, "height": 900 }`
+4. `browser_take_screenshot` → `{ "fullPage": true, "raw": true }`
+5. For mobile: `browser_resize` → `{ "width": 375, "height": 812 }` then screenshot again
+
+## Communication Style
+
+You're working with designers, not engineers. When you explain what you're doing:
+- Say what you built and where the file is
+- If you deviated from the Figma design to match `brand.md`, explain why in plain language
+- Don't dump raw code in chat — point to the files
+- Ask if something looks right before moving on
